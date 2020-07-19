@@ -1,0 +1,2 @@
+1. see link https://speakerdeck.com/chitsaou/jian-dan-yi-dong-de-oauth-2-dot-0
+2. see Yoku_Wakaru_OAuth_2.pdf

@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/2/4
+ * Time: 下午 02:54
+ */
+
+namespace Modules\Node\Constants\Drama;
+
+class LanguageSettingNodeCodeConstants
+{
+    const DRAMA_LANGUAGE_SETTING = 'DRAMA_LANGUAGE_SETTING';
+    const DRAMA_LANGUAGE_SETTING_READ = 'DRAMA_LANGUAGE_SETTING_READ';
+    const DRAMA_LANGUAGE_SETTING_CREATE = 'DRAMA_LANGUAGE_SETTING_CREATE';
+    const DRAMA_LANGUAGE_SETTING_UPDATE = 'DRAMA_LANGUAGE_SETTING_UPDATE';
+    const DRAMA_LANGUAGE_SETTING_DELETE = 'DRAMA_LANGUAGE_SETTING_DELETE';
+}

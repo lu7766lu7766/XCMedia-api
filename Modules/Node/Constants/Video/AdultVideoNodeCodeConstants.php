@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: derek
+ * Date: 2020/3/4
+ * Time: 下午 04:15
+ */
+
+namespace Modules\Node\Constants\Video;
+
+class AdultVideoNodeCodeConstants
+{
+    const VIDEO_ADULT_VIDEO_MANAGE = 'VIDEO_ADULT_VIDEO_MANAGE';
+    const VIDEO_ADULT_VIDEO_MANAGE_READ = 'VIDEO_ADULT_VIDEO_MANAGE_READ';
+    const VIDEO_ADULT_VIDEO_MANAGE_CREATE = 'VIDEO_ADULT_VIDEO_MANAGE_CREATE';
+    const VIDEO_ADULT_VIDEO_MANAGE_UPDATE = 'VIDEO_ADULT_VIDEO_MANAGE_UPDATE';
+    const VIDEO_ADULT_VIDEO_MANAGE_DELETE = 'VIDEO_ADULT_VIDEO_MANAGE_DELETE';
+}

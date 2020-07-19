@@ -1,0 +1,14 @@
+{
+    "name": "Literature",
+    "alias": "literature",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Literature\\Providers\\LiteratureServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

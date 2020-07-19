@@ -1,0 +1,16 @@
+{
+    "name": "Passport",
+    "alias": "passport",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Passport\\Providers\\PassportServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

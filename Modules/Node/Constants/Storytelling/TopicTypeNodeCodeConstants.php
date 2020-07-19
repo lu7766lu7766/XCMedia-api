@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: user
+ * Date: 2020/2/11
+ * Time: 上午 11:20
+ */
+
+namespace Modules\Node\Constants\Storytelling;
+
+class TopicTypeNodeCodeConstants
+{
+    const STORYTELLING_TOPIC_TYPE = 'STORYTELLING_TOPIC_TYPE';
+    const STORYTELLING_TOPIC_TYPE_READ = 'STORYTELLING_TOPIC_TYPE_READ';
+    const STORYTELLING_TOPIC_TYPE_CREATE = 'STORYTELLING_TOPIC_TYPE_CREATE';
+    const STORYTELLING_TOPIC_TYPE_UPDATE = 'STORYTELLING_TOPIC_TYPE_UPDATE';
+    const STORYTELLING_TOPIC_TYPE_DELETE = 'STORYTELLING_TOPIC_TYPE_DELETE';
+}
+

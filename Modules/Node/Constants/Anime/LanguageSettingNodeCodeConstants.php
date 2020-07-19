@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/2/4
+ * Time: 下午 03:18
+ */
+
+namespace Modules\Node\Constants\Anime;
+
+class LanguageSettingNodeCodeConstants
+{
+    const ANIME_LANGUAGE_SETTING = 'ANIME_LANGUAGE_SETTING';
+    const ANIME_LANGUAGE_SETTING_READ = 'ANIME_LANGUAGE_SETTING_READ';
+    const ANIME_LANGUAGE_SETTING_CREATE = 'ANIME_LANGUAGE_SETTING_CREATE';
+    const ANIME_LANGUAGE_SETTING_UPDATE = 'ANIME_LANGUAGE_SETTING_UPDATE';
+    const ANIME_LANGUAGE_SETTING_DELETE = 'ANIME_LANGUAGE_SETTING_DELETE';
+}

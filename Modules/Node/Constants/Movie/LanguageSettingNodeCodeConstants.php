@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/2/4
+ * Time: 下午 02:44
+ */
+
+namespace Modules\Node\Constants\Movie;
+
+class LanguageSettingNodeCodeConstants
+{
+    const MOVIE_LANGUAGE_SETTING = 'MOVIE_LANGUAGE_SETTING';
+    const MOVIE_LANGUAGE_SETTING_READ = 'MOVIE_LANGUAGE_SETTING_READ';
+    const MOVIE_LANGUAGE_SETTING_CREATE = 'MOVIE_LANGUAGE_SETTING_CREATE';
+    const MOVIE_LANGUAGE_SETTING_UPDATE = 'MOVIE_LANGUAGE_SETTING_UPDATE';
+    const MOVIE_LANGUAGE_SETTING_DELETE = 'MOVIE_LANGUAGE_SETTING_DELETE';
+}

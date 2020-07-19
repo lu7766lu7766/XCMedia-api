@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: derek
+ * Date: 2020/1/30
+ * Time: 下午 05:21
+ */
+
+namespace Modules\Node\Constants\Variety;
+
+class RegionSettingNodeCodeConstants
+{
+    const VARIETY_REGION_SETTING = 'VARIETY_REGION_SETTING';
+    const VARIETY_REGION_SETTING_READ = 'VARIETY_REGION_SETTING_READ';
+    const VARIETY_REGION_SETTING_CREATE = 'VARIETY_REGION_SETTING_CREATE';
+    const VARIETY_REGION_SETTING_UPDATE = 'VARIETY_REGION_SETTING_UPDATE';
+    const VARIETY_REGION_SETTING_DELETE = 'VARIETY_REGION_SETTING_DELETE';
+}

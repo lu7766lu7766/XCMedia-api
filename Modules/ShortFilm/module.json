@@ -1,0 +1,14 @@
+{
+    "name": "ShortFilm",
+    "alias": "shortfilm",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\ShortFilm\\Providers\\ShortFilmServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

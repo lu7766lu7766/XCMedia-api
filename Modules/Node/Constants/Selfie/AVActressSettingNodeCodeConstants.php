@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: derek
+ * Date: 2020/2/10
+ * Time: 下午 03:54
+ */
+
+namespace Modules\Node\Constants\Selfie;
+
+class AVActressSettingNodeCodeConstants
+{
+    const SELFIE_AV_ACTRESS_SETTING = 'SELFIE_AV_ACTRESS_SETTING';
+    const SELFIE_AV_ACTRESS_SETTING_READ = 'SELFIE_AV_ACTRESS_SETTING_READ';
+    const SELFIE_AV_ACTRESS_SETTING_CREATE = 'SELFIE_AV_ACTRESS_SETTING_CREATE';
+    const SELFIE_AV_ACTRESS_SETTING_UPDATE = 'SELFIE_AV_ACTRESS_SETTING_UPDATE';
+    const SELFIE_AV_ACTRESS_SETTING_DELETE = 'SELFIE_AV_ACTRESS_SETTING_DELETE';
+}

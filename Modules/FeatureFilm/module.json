@@ -1,0 +1,14 @@
+{
+    "name": "FeatureFilm",
+    "alias": "featurefilm",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\FeatureFilm\\Providers\\FeatureFilmServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

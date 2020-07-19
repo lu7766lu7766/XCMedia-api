@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: derek
+ * Date: 2020/2/4
+ * Time: 下午 04:24
+ */
+
+namespace Modules\Node\Constants\ShortFilm;
+
+class RegionSettingNodeCodeConstants
+{
+    const SHORT_FILM_REGION_SETTING = 'SHORT_FILM_REGION_SETTING';
+    const SHORT_FILM_REGION_SETTING_READ = 'SHORT_FILM_REGION_SETTING_READ';
+    const SHORT_FILM_REGION_SETTING_CREATE = 'SHORT_FILM_REGION_SETTING_CREATE';
+    const SHORT_FILM_REGION_SETTING_UPDATE = 'SHORT_FILM_REGION_SETTING_UPDATE';
+    const SHORT_FILM_REGION_SETTING_DELETE = 'SHORT_FILM_REGION_SETTING_DELETE';
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Drama",
+    "alias": "drama",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Drama\\Providers\\DramaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/1/20
+ * Time: 下午 04:27
+ */
+
+namespace Modules\Node\Constants\Variety;
+
+class SourceSettingNodeCodeConstants
+{
+    const VARIETY_SOURCE_SETTING = 'VARIETY_SOURCE_SETTING';
+    const VARIETY_SOURCE_SETTING_READ = 'VARIETY_SOURCE_SETTING_READ';
+    const VARIETY_SOURCE_SETTING_CREATE = 'VARIETY_SOURCE_SETTING_CREATE';
+    const VARIETY_SOURCE_SETTING_UPDATE = 'VARIETY_SOURCE_SETTING_UPDATE';
+    const VARIETY_SOURCE_SETTING_DELETE = 'VARIETY_SOURCE_SETTING_DELETE';
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Storytelling",
+    "alias": "storytelling",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Storytelling\\Providers\\StorytellingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

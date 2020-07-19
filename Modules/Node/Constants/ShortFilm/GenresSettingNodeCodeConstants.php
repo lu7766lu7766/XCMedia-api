@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: user
+ * Date: 2020/2/3
+ * Time: 下午 02:53
+ */
+
+namespace Modules\Node\Constants\ShortFilm;
+
+class GenresSettingNodeCodeConstants
+{
+    const SHORT_FILM_GENRES_SETTING = 'SHORT_FILM_GENRES_SETTING';
+    const SHORT_FILM_GENRES_SETTING_READ = 'SHORT_FILM_GENRES_SETTING_READ';
+    const SHORT_FILM_GENRES_SETTING_CREATE = 'SHORT_FILM_GENRES_SETTING_CREATE';
+    const SHORT_FILM_GENRES_SETTING_UPDATE = 'SHORT_FILM_GENRES_SETTING_UPDATE';
+    const SHORT_FILM_GENRES_SETTING_DELETE = 'SHORT_FILM_GENRES_SETTING_DELETE';
+}
+

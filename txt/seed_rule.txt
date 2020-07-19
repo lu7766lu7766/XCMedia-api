@@ -1,0 +1,2 @@
+1. 有新的seed請務必加到database\seeds\DatabaseSeeder.php裡面,注意你的Seed放置的順序
+2. 你的新功能有需要跑seed請在你的pull request 留 comment. e.g. php artisan db:seed --path=YourSeedClass.php

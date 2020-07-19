@@ -1,0 +1,354 @@
+workspace:
+  base: /var/www
+  path: html
+
+pipeline:
+
+  ### TEST environment ###
+  test-build:
+    image: registry.xing99.net/base-php:v.1.2
+    secrets:
+    - auth_json
+    - test_env
+    - test_oauth_private_key
+    - test_oauth_public_key
+    commands:
+    - echo "$AUTH_JSON" > /root/.composer/auth.json
+    - echo "$TEST_ENV" > .env
+    - echo "$TEST_OAUTH_PRIVATE_KEY" > storage/oauth-private.key
+    - echo "$TEST_OAUTH_PUBLIC_KEY" > storage/oauth-public.key
+    - composer install
+    - php artisan vendor:publish --all
+    when:
+      branch: test
+      event: push
+
+  test-publish-php:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: test-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: test-trade-api-php
+    repo: registry.xing99.net/test-trade-api-php
+    tags:
+    - "${DRONE_COMMIT_SHA}"
+    when:
+      branch: test
+      event: push
+
+  test-publish-nginx:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: test-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: test-trade-api-nginx
+    repo: registry.xing99.net/test-trade-api-nginx
+    tags:
+    - "${DRONE_COMMIT_SHA}"
+    when:
+      branch: test
+      event: push
+
+  test-deploy-php:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/test-trade-api-php:"${DRONE_COMMIT_SHA}" test-trade-api-php
+    when:
+      branch: test
+      event: push
+
+  test-deploy-cron:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/test-trade-api-php:"${DRONE_COMMIT_SHA}" test-trade-api-cron
+    when:
+      branch: test
+      event: push
+
+  test-deploy-nginx:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/test-trade-api-nginx:"${DRONE_COMMIT_SHA}" test-trade-api-nginx
+    when:
+      branch: test
+      event: push
+
+  test-notify:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: bot-drone
+    username: drone
+    template: >
+      {{#success build.status}}
+        repo name - {{repo.name}}
+        ENV - TEST
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        SUCCESS!!!
+      {{else}}
+        repo name - {{repo.name}}
+        ENV - TEST
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        FAILED!!!
+      {{/success}}
+    when:
+      branch: test
+      status:  [ failure, success ]
+      event: push
+
+  ### RC environment ###
+  rc-build:
+    image: registry.xing99.net/base-php:v.1.2
+    secrets:
+    - auth_json
+    - rc_env
+    commands:
+    - echo "$AUTH_JSON" > /root/.composer/auth.json
+    - echo "$RC_ENV" > .env
+    - composer install
+    - php artisan key:generate
+    - php artisan vendor:publish -n --all
+    - php artisan passport:keys
+    - php artisan migrate:refresh --force --seed
+    - php artisan config:cache
+    when:
+      branch: master
+      event: push
+
+  rc-publish-php:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: rc-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: rc-trade-api-php
+    repo: registry.xing99.net/rc-trade-api-php
+    tags:
+    - "${DRONE_COMMIT_SHA}"
+    when:
+      branch: master
+      event: push
+
+  rc-publish-nginx:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: rc-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: rc-trade-api-nginx
+    repo: registry.xing99.net/rc-trade-api-nginx
+    tags:
+    - "${DRONE_COMMIT_SHA}"
+    when:
+      branch: master
+      event: push
+
+  rc-deploy-php:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/rc-trade-api-php:"${DRONE_COMMIT_SHA}" rc-trade-api-php
+    when:
+      branch: master
+      event: push
+
+  rc-deploy-nginx:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/rc-trade-api-nginx:"${DRONE_COMMIT_SHA}" rc-trade-api-nginx
+    when:
+      branch: master
+      event: push
+
+  rc-deploy-cron:
+    image: appleboy/drone-ssh
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/rc-trade-api-php:"${DRONE_COMMIT_SHA}" rc-trade-api-cron
+    when:
+      branch: master
+      event: push
+
+  rc-notify:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: bot-drone
+    username: drone
+    template: >
+      {{#success build.status}}
+        repo name - {{repo.name}}
+        ENV - RC
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        SUCCESS!!!
+      {{else}}
+        repo name - {{repo.name}}
+        ENV - RC
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        FAILED!!!
+      {{/success}}
+    when:
+      branch: master
+      status:  [ failure, success ]
+      event: push
+
+  ### STABLE environment ###
+  stable-build:
+    image: registry.xing99.net/base-php:v.1.2
+    secrets:
+    - auth_json
+    - stable_env
+    - stable_oauth_private_key
+    - stable_oauth_public_key
+    commands:
+    - echo "$AUTH_JSON" > /root/.composer/auth.json
+    - echo "$STABLE_ENV" > .env
+    - echo "$STABLE_OAUTH_PRIVATE_KEY" > storage/oauth-private.key
+    - echo "$STABLE_OAUTH_PUBLIC_KEY" > storage/oauth-public.key
+    - sh script/$DRONE_TAG.sh
+    when:
+      branch: master
+      event: tag
+
+  stable-publish-php:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: stable-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: stable-trade-api-php
+    repo: registry.xing99.net/stable-trade-api-php
+    tags:
+    - "${DRONE_TAG}"
+    when:
+      branch: master
+      event: tag
+
+  stable-publish-nginx:
+    image: plugins/docker
+    secrets:
+    - docker_username
+    - docker_password
+    group: stable-publish
+    registry: registry.xing99.net
+    dockerfile: Dockerfile
+    target: stable-trade-api-nginx
+    repo: registry.xing99.net/stable-trade-api-nginx
+    tags:
+    - "${DRONE_TAG}"
+    when:
+      branch: master
+      event: tag
+
+  stable-deploy-php:
+    image: appleboy/drone-ssh
+    group: stable-deploy
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/stable-trade-api-php:"${DRONE_TAG}" stable-trade-api-php
+    when:
+      branch: master
+      event: tag
+
+  stable-deploy-nginx:
+    image: appleboy/drone-ssh
+    group: stable-deploy
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/stable-trade-api-nginx:"${DRONE_TAG}" stable-trade-api-nginx
+    when:
+      branch: master
+      event: tag
+
+  stable-deploy-cron:
+    image: appleboy/drone-ssh
+    group: stable-deploy
+    host: 172.31.1.11
+    port: 22
+    username: centos
+    secrets: [ ssh_key ]
+    script:
+    - sudo docker service update --with-registry-auth --force --image registry.xing99.net/stable-trade-api-php:"${DRONE_TAG}" stable-trade-api-cron
+    when:
+      branch: master
+      event: tag
+
+  stable-notify:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: bot-drone
+    username: drone
+    template: >
+      {{#success build.status}}
+        repo name - {{repo.name}}
+        ENV - STABLE
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        SUCCESS!!!
+      {{else}}
+        repo name - {{repo.name}}
+        ENV - STABLE
+        branch - {{build.branch}}
+        commit - {{build.commit}}
+        tag - {{build.tag}}
+        started time - {{since build.started}}
+        FAILED!!!
+      {{/success}}
+    when:
+      branch: master
+      status:  [ failure, success ]
+      event: tag
+
+branches: [ master, test ]

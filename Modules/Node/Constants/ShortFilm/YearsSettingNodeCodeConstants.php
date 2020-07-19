@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/1/31
+ * Time: 下午 04:12
+ */
+
+namespace Modules\Node\Constants\ShortFilm;
+
+class YearsSettingNodeCodeConstants
+{
+    const SHORT_FILM_YEARS_SETTING = 'SHORT_FILM_YEARS_SETTING';
+    const SHORT_FILM_YEARS_SETTING_READ = 'SHORT_FILM_YEARS_SETTING_READ';
+    const SHORT_FILM_YEARS_SETTING_CREATE = 'SHORT_FILM_YEARS_SETTING_CREATE';
+    const SHORT_FILM_YEARS_SETTING_UPDATE = 'SHORT_FILM_YEARS_SETTING_UPDATE';
+    const SHORT_FILM_YEARS_SETTING_DELETE = 'SHORT_FILM_YEARS_SETTING_DELETE';
+}

@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: arxing
+ * Date: 2020/03/06
+ * Time: 下午 06:18
+ */
+
+namespace Modules\Node\Constants\Literature;
+
+class ManageLiteratureVolumeNodeCodeConstants
+{
+    const MANAGE_LITERATURE_VOLUME = 'MANAGE_LITERATURE_VOLUME';
+    const MANAGE_LITERATURE_VOLUME_READ = 'MANAGE_LITERATURE_VOLUME_READ';
+    const MANAGE_LITERATURE_VOLUME_CREATE = 'MANAGE_LITERATURE_VOLUME_CREATE';
+    const MANAGE_LITERATURE_VOLUME_UPDATE = 'MANAGE_LITERATURE_VOLUME_UPDATE';
+    const MANAGE_LITERATURE_VOLUME_DELETE = 'MANAGE_LITERATURE_VOLUME_DELETE';
+}

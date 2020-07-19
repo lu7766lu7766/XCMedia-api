@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/2/4
+ * Time: 下午 03:28
+ */
+
+namespace Modules\Node\Constants\Variety;
+
+class LanguageSettingNodeCodeConstants
+{
+    const VARIETY_LANGUAGE_SETTING = 'VARIETY_LANGUAGE_SETTING';
+    const VARIETY_LANGUAGE_SETTING_READ = 'VARIETY_LANGUAGE_SETTING_READ';
+    const VARIETY_LANGUAGE_SETTING_CREATE = 'VARIETY_LANGUAGE_SETTING_CREATE';
+    const VARIETY_LANGUAGE_SETTING_UPDATE = 'VARIETY_LANGUAGE_SETTING_UPDATE';
+    const VARIETY_LANGUAGE_SETTING_DELETE = 'VARIETY_LANGUAGE_SETTING_DELETE';
+}
